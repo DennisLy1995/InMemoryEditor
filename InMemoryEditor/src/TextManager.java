@@ -5,7 +5,7 @@ public class TextManager {
 
 	private List<Paragraph> wholeText = new ArrayList<>();
 	private List<Memento> wholeMementos = new ArrayList<>();
-	
+
 	public void add(String readNewParagraph) {
 		System.out.println("Type the text:\n");
 		Paragraph temp = new Paragraph(readNewParagraph);
@@ -17,7 +17,7 @@ public class TextManager {
 		boolean modified = false;
 		int contador = 1;
 		Paragraph temp = new Paragraph("");
-		for (Paragraph currentParagraph: wholeText) {
+		for (Paragraph currentParagraph : wholeText) {
 			if (contador == numParagraph) {
 				temp.setText(currentParagraph.getText());
 				temp.setStyle(currentParagraph.getStyle());
@@ -27,12 +27,20 @@ public class TextManager {
 			}
 			contador++;
 		}
-		
+
 		return modified;
 	}
 
+	public boolean backToOldState(int numParagraph) {
+		boolean checker = false;
+		
+		
+		
+		return checker;
+	}
+
 	public List<Paragraph> getParagraphs() {
-		return this.wholeText;		
+		return this.wholeText;
 	}
 
 }

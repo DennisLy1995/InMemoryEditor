@@ -5,13 +5,15 @@ public class Controller {
 	
 	public static void execute(int option) {
 		boolean checker = false;
+		int numParagraph = 0;
+		
 		switch(option) {
 		case 1:
 			textManager.add(UI.readNewParagraph());
 			break;
 			
 		case 2: 
-			int numParagraph = UI.getParagraphNumber();
+			numParagraph = UI.getParagraphNumber();
 			checker = textManager.modify(numParagraph, UI.readNewParagraph());
 			if(checker==true) {
 				System.out.println("El texto se ha modificado con exito.");
@@ -25,6 +27,12 @@ public class Controller {
 			for (Paragraph paragraph: textManager.getParagraphs()){
 				UI.print(paragraph.getText());
 			}
+			break;
+			
+		case 4: 
+			UI.print("Select the text you want to get back.");
+			numParagraph = UI.getParagraphNumber();
+			checker = textManager.backToOldState(numParagraph);
 			break;
 		}
 		

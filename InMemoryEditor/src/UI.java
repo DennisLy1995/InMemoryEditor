@@ -7,11 +7,12 @@ public class UI {
 		System.out.println("");
 		System.out.println("=========================");
 		System.out.println("Editor Demo");
-		System.out.println("Select your option");
-		System.out.println("1 Add paragraph");
-		System.out.println("2 Modify paragrap");
-		System.out.println("3 Show all text");
-		System.out.println("4 Exit");
+		System.out.println("Select your option.");
+		System.out.println("1 Add paragraph.");
+		System.out.println("2 Modify paragrap.");
+		System.out.println("3 Show all text.");
+		System.out.println("4 Delete modification.");
+		System.out.println("5 Exit.");
 		System.out.println("=========================");
 	}
 
