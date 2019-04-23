@@ -34,7 +34,7 @@ public class UI {
 
 	public static int getParagraphNumber() {
 		Scanner reader = new Scanner(System.in);
-		System.out.println("Ingrese el texto que desea modificar:\n");
+		System.out.println("Type the text you want to modify:\n");
 		try {
 			return Integer.parseInt(reader.nextLine());
 		} catch (Exception e) {
