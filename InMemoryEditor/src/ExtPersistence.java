@@ -6,7 +6,7 @@ public abstract class ExtPersistence {
 
 	protected Gson jsonSerializer = new Gson();
 	
-	public abstract List<ExtParagraph> retornarParrafosGuardados(String temp);
+	public abstract List<ExtParagraph> retornarParrafosGuardados(String temp, Class<ExtParagraph[]> test);
 	public abstract List<ExtMemento> retornarEstadosAnterioresGuardados(String temp);
 	public abstract String serializeListParagraphs(List<ExtParagraph> list);
 	public abstract String serializeListMementos(List<ExtMemento> list);
@@ -19,5 +19,6 @@ public abstract class ExtPersistence {
 		
 	}
 	
+
 	
 }

@@ -90,6 +90,8 @@ public class Controller {
 				System.out.println("Information imported in the system.");
 			}catch(Exception e) {
 				System.out.println("Upss something went wrong.");
+				System.out.println(e);
+				
 			}
 			
 			break;

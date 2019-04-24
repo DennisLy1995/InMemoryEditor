@@ -5,18 +5,31 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class TxtPersistence extends ExtPersistence{
+public class TxtPersistence extends ExtPersistence {
 
 	@Override
-	public List<ExtParagraph> retornarParrafosGuardados(String temp) {
+	public List<ExtParagraph> retornarParrafosGuardados(String temp, Class<ExtParagraph[]> test) {
+		/*ExtParagraph[] arr = jsonSerializer.fromJson(temp, test);
+		return Arrays.asList(arr);
+		/*
+		 * public static<T>List<T> stringToArray(String s,Class<T[]> clazz){
+		 *  T[] arr		 * =newGson().fromJson(s, clazz);
+		 * 
+		 * returnArrays.asList(arr);//or return
+		 * Arrays.asList(new Gson().fromJson(s, clazz)); for a one-liner}
+		 * 
+		 * String name = stringToArray(message,Product[].class).get(0).getName();
+		 * 
+		 */
 		return jsonSerializer.fromJson(temp, ArrayList.class);
 	}
 
 	@Override
 	public List<ExtMemento> retornarEstadosAnterioresGuardados(String temp) {
-		
+
 		return jsonSerializer.fromJson(temp, ArrayList.class);
 	}
 
@@ -32,79 +45,79 @@ public class TxtPersistence extends ExtPersistence{
 
 	@Override
 	public String saveListParagraphs(String phrases) {
-		
+
 		String direccionArchivos = "C:\\Users\\Public\\Documents\\";
 		String name = UI.leerString("Define the name of the txt file you want to store");
-		direccionArchivos = direccionArchivos+name+".txt";
+		direccionArchivos = direccionArchivos + name + ".txt";
 		File file = new File(direccionArchivos);
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(file);
-            fileWriter.write(phrases);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(file);
+			fileWriter.write(phrases);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				fileWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return name;
 	}
 
 	@Override
 	public boolean saveListMementos(String name, String mementos) {
-		
+
 		boolean checker = false;
-		
+
 		String direccionArchivos = "C:\\Users\\Public\\Documents\\";
-		direccionArchivos = direccionArchivos+name+"Mementos.txt";
+		direccionArchivos = direccionArchivos + name + "Mementos.txt";
 		File file = new File(direccionArchivos);
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(file);
-            fileWriter.write(mementos);
-            checker = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-		
-		if(checker == true) {
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(file);
+			fileWriter.write(mementos);
+			checker = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				fileWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (checker == true) {
 			System.out.println("List of phrases has been saved in: C:\\Users\\Public\\Documents\\" + name + ".txt");
-			System.out.println("                                   C:\\Users\\Public\\Documents\\" + name + "Mementos.txt");
-		}else {
+			System.out.println(
+					"                                   C:\\Users\\Public\\Documents\\" + name + "Mementos.txt");
+		} else {
 			System.out.println("Something went wrong and the phrases have not been saved.");
 		}
 		return checker;
 	}
-	
-	
+
 	public static String readFile(String name) throws IOException {
 		String lectureTemp = "";
-		String lecture="";
+		String lecture = "";
 		String direccionArchivos = "C:\\Users\\Public\\Documents\\";
-		direccionArchivos = direccionArchivos+name+".txt";
+		direccionArchivos = direccionArchivos + name + ".txt";
 		FileReader fileReader = new FileReader(direccionArchivos);
 		try {
-			
+
 			BufferedReader buffer = new BufferedReader(fileReader);
-			
-			while((lectureTemp=buffer.readLine())!=null) {
+
+			while ((lectureTemp = buffer.readLine()) != null) {
 				lecture = lecture + lectureTemp;
 			}
 			fileReader.close();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			fileReader.close();
 			System.out.println("No se ha logrado leer el archivo.");
 		}
-		
+
 		return lecture;
 	}
 
@@ -112,7 +125,7 @@ public class TxtPersistence extends ExtPersistence{
 		List<ExtParagraph> temp = new ArrayList<>();
 		try {
 			String file = readFile(name);
-			temp = retornarParrafosGuardados(file);
+			temp = retornarParrafosGuardados(file, ExtParagraph[].class);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -129,5 +142,5 @@ public class TxtPersistence extends ExtPersistence{
 		}
 		return temp;
 	}
-	
+
 }
