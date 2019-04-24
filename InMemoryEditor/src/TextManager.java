@@ -20,7 +20,6 @@ public class TextManager {
 		for (Paragraph currentParagraph : wholeText) {
 			if (contador == numParagraph) {
 				temp.setText(currentParagraph.getText());
-				temp.setStyle(currentParagraph.getStyle());
 				wholeMementos.set(wholeText.indexOf(currentParagraph), new Memento(temp));
 				currentParagraph.setText(readNewParagraph);
 				modified = true;
@@ -40,7 +39,6 @@ public class TextManager {
 			if (contador == numParagraph) {
 				index = wholeText.indexOf(currentParagraph);
 				temp.setText(currentParagraph.getText());
-				temp.setStyle(currentParagraph.getStyle());
 				currentParagraph = wholeMementos.get(wholeText.indexOf(currentParagraph)).GetSavedState();
 				wholeText.set(index, currentParagraph);
 				wholeMementos.set(index, new Memento(temp));

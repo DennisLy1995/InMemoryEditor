@@ -1,21 +1,20 @@
 
-public class Paragraph {
+public class Paragraph implements IntParagraph{
 
 	private String text;
-	private String style;
 
 	public Paragraph(String newText) {
 		this.text = newText;
-		this.style = "Monaco";
 	}
 
+	@Override
 	public Memento saveState() {
 		return new Memento(this);
 	}
 
+	@Override
 	public void retoreFromMemento(Memento state) {
 		this.text = state.GetSavedState().getText();
-		this.style = state.GetSavedState().getStyle();
 	}
 
 	public int getLength() {
@@ -28,15 +27,6 @@ public class Paragraph {
 
 	public void setText(String newText) {
 		this.text = newText;
-	}
-
-	public String getStyle() {
-		return style;
-	}
-
-	public void setStyle(String style) {
-		this.style = style;
-	}
-	
+	}	
 	
 }
