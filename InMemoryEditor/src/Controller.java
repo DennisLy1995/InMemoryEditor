@@ -30,7 +30,6 @@ public class Controller {
 			break;
 			
 		case 4: 
-			UI.print("Select the text you want to get back.");
 			numParagraph = UI.getParagraphNumber();
 			checker = textManager.backToOldState(numParagraph);
 			break;

@@ -32,11 +32,23 @@ public class TextManager {
 	}
 
 	public boolean backToOldState(int numParagraph) {
-		boolean checker = false;
-		
-		
-		
-		return checker;
+		boolean returned = false;
+		int contador = 1;
+		int index = -1;
+		Paragraph temp = new Paragraph("");
+		for (Paragraph currentParagraph : wholeText) {
+			if (contador == numParagraph) {
+				index = wholeText.indexOf(currentParagraph);
+				temp.setText(currentParagraph.getText());
+				temp.setStyle(currentParagraph.getStyle());
+				currentParagraph = wholeMementos.get(wholeText.indexOf(currentParagraph)).GetSavedState();
+				wholeText.set(index, currentParagraph);
+				wholeMementos.set(index, new Memento(temp));
+				returned = true;
+			}
+			contador++;
+		}
+		return returned;
 	}
 
 	public List<Paragraph> getParagraphs() {
