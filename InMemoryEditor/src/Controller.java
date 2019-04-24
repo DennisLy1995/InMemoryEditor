@@ -33,8 +33,77 @@ public class Controller {
 			numParagraph = UI.getParagraphNumber();
 			checker = textManager.backToOldState(numParagraph);
 			break;
+			
+		case 5: 
+			Controller.saveOrRestore();
+			break;
+			
 		}
 		
 	}
+
+	
+	
+	private static void saveOrRestore() {
+		String option = UI.leerString("Digit 1 to save\nDigit 2 to restore");
+		switch(option) {
+		case "1":
+			//Save
+			Controller.save();
+			break;
+			
+		case "2":
+			//Restore
+			Controller.Restore();
+			break;
+		}
+		
+	}
+
+	private static void save() {
+		String option = UI.leerString("Digit 1 for txt\nDigit 2 for BD");
+		switch(option) {
+		case "1":
+			//Txt
+			TxtPersistence saveTxt = new TxtPersistence();
+			saveTxt.guardarListas(textManager.getWholeText(), textManager.getWholeMementos());
+			break;
+			
+		case "2":
+			//BD
+			BDPersistence saveBD = new BDPersistence();
+			saveBD.guardarListas(textManager.getWholeText(), textManager.getWholeMementos());
+			break;
+		}		
+	}
+
+	private static void Restore() {
+		String option = UI.leerString("Digit 1 for txt\nDigit 2 for BD");
+		switch(option) {
+		case "1":
+			//Txt
+			try {
+				TxtPersistence saveTxt = new TxtPersistence();
+				String name = UI.leerString("Type the name of the File");
+				textManager.setWholeText(saveTxt.readParagraphFile(name));
+				textManager.setWholeMementos(saveTxt.readMementoFile(name));
+				System.out.println("Information imported in the system.");
+			}catch(Exception e) {
+				System.out.println("Upss something went wrong.");
+			}
+			
+			break;
+			
+		case "2":
+			//BD
+			BDPersistence saveBD = new BDPersistence();
+			System.out.println("Information imported in the system.");
+			break;
+		}
+	}
+
+
+
+
 
 }

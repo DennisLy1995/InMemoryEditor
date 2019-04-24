@@ -143,4 +143,22 @@ public class TextManager {
 
 	}
 
+	public List<ExtParagraph> getWholeText() {
+		return wholeText;
+	}
+
+	public void setWholeText(List<ExtParagraph> wholeText) {
+		this.wholeText = wholeText;
+	}
+
+	public List<ExtMemento> getWholeMementos() {
+		return wholeMementos;
+	}
+
+	public void setWholeMementos(List<ExtMemento> wholeMementos) {
+		this.wholeMementos = wholeMementos;
+	}
+	
+	
+
 }

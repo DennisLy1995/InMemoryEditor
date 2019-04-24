@@ -11,8 +11,9 @@ public class UI {
 		System.out.println("1 Add paragraph.");
 		System.out.println("2 Modify paragrap.");
 		System.out.println("3 Show all text.");
-		System.out.println("4 Delete modification.");
-		System.out.println("5 Exit.");
+		System.out.println("4 Return phrase to old status.");
+		System.out.println("5 Save/Restore.");
+		System.out.println("6 Exit.");
 		System.out.println("=========================");
 	}
 
