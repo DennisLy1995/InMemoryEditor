@@ -1,7 +1,8 @@
 
-public class Paragraph implements IntParagraph{
+public class Paragraph implements IntParagraph {
 
 	private String text;
+	private int type = 1;
 
 	public Paragraph(String newText) {
 		this.text = newText;
@@ -13,8 +14,24 @@ public class Paragraph implements IntParagraph{
 	}
 
 	@Override
+	public MementoStyled saveStateStyled() {
+		return null;
+	}
+
+	@Override
 	public void retoreFromMemento(Memento state) {
 		this.text = state.GetSavedState().getText();
+		this.type = state.GetSavedState().getTypeParagraph();
+	}
+
+	@Override
+	public void retoreFromMemento(MementoStyled state) {
+		// Do nothing
+	}
+
+	@Override
+	public int getTypeParagraph() {
+		return type;
 	}
 
 	public int getLength() {
@@ -27,6 +44,6 @@ public class Paragraph implements IntParagraph{
 
 	public void setText(String newText) {
 		this.text = newText;
-	}	
-	
+	}
+
 }
