@@ -1,11 +1,18 @@
 
-public class ParagraphStyled implements IntParagraph {
+public class ParagraphStyled extends ExtParagraph {
 
 	private String text;
 	private int fontSize = 0;
 	private String fontFamily = "";
 	private int type = 2;
 
+	public ParagraphStyled(String text, int fontSize, String fontFamily) {
+		this.text = text;
+		this.fontSize = fontSize;
+		this.fontFamily = fontFamily;
+		this.type = 2;
+	}
+	
 	@Override
 	public Memento saveState() {
 		return null;// new Memento(this);
@@ -23,23 +30,16 @@ public class ParagraphStyled implements IntParagraph {
 
 	@Override
 	public void retoreFromMemento(MementoStyled state) {
-		this.text = state.GetSavedState().getText();
-		this.fontSize = state.GetSavedState().getFontSize();
-		this.fontFamily = state.GetSavedState().getFontFamily();
-		this.type = state.GetSavedState().getTypeParagraph();
+		this.text = state.GetSavedStateStyled().getText();
+		this.fontSize = state.GetSavedStateStyled().getFontSize();
+		this.fontFamily = state.GetSavedStateStyled().getFontFamily();
+		this.type = state.GetSavedStateStyled().getTypeParagraph();
 
 	}
 
 	@Override
 	public int getTypeParagraph() {
 		return type;
-	}
-
-	public ParagraphStyled(String text, int fontSize, String fontFamily) {
-		super();
-		this.text = text;
-		this.fontSize = fontSize;
-		this.fontFamily = fontFamily;
 	}
 
 	public String getText() {

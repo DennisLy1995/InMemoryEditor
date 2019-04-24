@@ -4,7 +4,7 @@ import java.util.List;
 public class TextManager {
 
 	private List<Paragraph> wholeText = new ArrayList<>();
-	private List<Memento> wholeMementos = new ArrayList<>();
+	private List<ExtMemento> wholeMementos = new ArrayList<>();
 
 	public void add(String readNewParagraph) {
 		System.out.println("Type the text:\n");

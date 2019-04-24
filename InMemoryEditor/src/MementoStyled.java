@@ -1,5 +1,5 @@
 
-public class MementoStyled {
+public class MementoStyled extends ExtMemento{
 
 	private ParagraphStyled estado;
 	
@@ -7,8 +7,16 @@ public class MementoStyled {
 		this.estado = pEstado;
 	}
 	
-	public ParagraphStyled GetSavedState() {
+	@Override
+	public Paragraph GetSavedState() {
+		return null;
+	}
+
+	@Override
+	public ParagraphStyled GetSavedStateStyled() {
 		return estado;
 	}
+
+
 	
 }

@@ -1,11 +1,12 @@
 
-public class Paragraph implements IntParagraph {
+public class Paragraph extends ExtParagraph {
 
 	private String text;
 	private int type = 1;
 
 	public Paragraph(String newText) {
 		this.text = newText;
+		this.type = 1;
 	}
 
 	@Override
