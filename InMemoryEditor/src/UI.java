@@ -47,4 +47,26 @@ public class UI {
 		System.out.println(string);
 	}
 
+	public static int leerEntero(String mensaje) {
+		String lectura = "";
+		int entero = 0;
+		System.out.println(mensaje);
+		Scanner reader = new Scanner(System.in);
+		lectura = reader.nextLine();
+		
+		try {
+			entero = Integer.parseInt(lectura);
+		}catch(Exception e) {
+			entero = 1;
+		}
+		
+		return entero;
+	}
+
+	public static String leerString(String mensaje) {
+		System.out.println(mensaje);
+		Scanner reader = new Scanner(System.in);
+		return reader.nextLine();
+	}
+
 }

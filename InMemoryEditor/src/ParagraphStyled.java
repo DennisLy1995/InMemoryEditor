@@ -15,7 +15,7 @@ public class ParagraphStyled extends ExtParagraph {
 	
 	@Override
 	public Memento saveState() {
-		return null;// new Memento(this);
+		return null;
 	}
 
 	@Override
@@ -40,6 +40,11 @@ public class ParagraphStyled extends ExtParagraph {
 	@Override
 	public int getTypeParagraph() {
 		return type;
+	}
+	
+	@Override
+	public String InformationParagraph() {
+		return text + "{ fontSize: " + fontSize + ", fontFamily: " + fontFamily + "}";		
 	}
 
 	public String getText() {

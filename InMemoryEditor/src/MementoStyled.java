@@ -16,7 +16,5 @@ public class MementoStyled extends ExtMemento{
 	public ParagraphStyled GetSavedStateStyled() {
 		return estado;
 	}
-
-
 	
 }

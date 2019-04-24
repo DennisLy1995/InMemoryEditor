@@ -24,8 +24,8 @@ public class Controller {
 			
 		case 3: 
 			UI.print("This is the current whole text\n");
-			for (Paragraph paragraph: textManager.getParagraphs()){
-				UI.print(paragraph.getText());
+			for (ExtParagraph paragraph: textManager.getParagraphs()){
+				UI.print(paragraph.InformationParagraph());
 			}
 			break;
 			

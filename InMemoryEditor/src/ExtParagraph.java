@@ -6,5 +6,5 @@ public abstract class ExtParagraph {
 	public  abstract void retoreFromMemento(Memento state);
 	public  abstract void retoreFromMemento(MementoStyled state);
 	public  abstract int getTypeParagraph();
-	
+	public abstract String InformationParagraph();
 }

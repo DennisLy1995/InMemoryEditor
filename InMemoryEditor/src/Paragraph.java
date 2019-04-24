@@ -34,6 +34,11 @@ public class Paragraph extends ExtParagraph {
 	public int getTypeParagraph() {
 		return type;
 	}
+	
+	@Override
+	public String InformationParagraph() {
+		return text;			
+	}
 
 	public int getLength() {
 		return this.text.length();
@@ -46,5 +51,7 @@ public class Paragraph extends ExtParagraph {
 	public void setText(String newText) {
 		this.text = newText;
 	}
+
+
 
 }
