@@ -1,6 +1,9 @@
 
 public abstract class ExtParagraph {
 
+	public ExtParagraph() {
+		
+	}
 	public abstract Memento saveState();
 	public  abstract MementoStyled saveStateStyled();
 	public  abstract void retoreFromMemento(Memento state);

@@ -3,7 +3,7 @@ import java.util.List;
 public class BDPersistence extends ExtPersistence{
 
 	@Override
-	public List<ExtParagraph> retornarParrafosGuardados(String temp, Class<ExtParagraph[]> test) {
+	public List<ExtParagraph> retornarParrafosGuardados(String temp) {
 		return null;
 	}
 

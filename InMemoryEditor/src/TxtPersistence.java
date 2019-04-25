@@ -11,36 +11,84 @@ import java.util.List;
 public class TxtPersistence extends ExtPersistence {
 
 	@Override
-	public List<ExtParagraph> retornarParrafosGuardados(String temp, Class<ExtParagraph[]> test) {
-		/*ExtParagraph[] arr = jsonSerializer.fromJson(temp, test);
-		return Arrays.asList(arr);
-		/*
-		 * public static<T>List<T> stringToArray(String s,Class<T[]> clazz){
-		 *  T[] arr		 * =newGson().fromJson(s, clazz);
-		 * 
-		 * returnArrays.asList(arr);//or return
-		 * Arrays.asList(new Gson().fromJson(s, clazz)); for a one-liner}
-		 * 
-		 * String name = stringToArray(message,Product[].class).get(0).getName();
-		 * 
-		 */
-		return jsonSerializer.fromJson(temp, ArrayList.class);
+	public List<ExtParagraph> retornarParrafosGuardados(String temp) {
+		
+		List<ExtParagraph> list = new ArrayList<>();
+		ExtParagraph tempParagraph = null;
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Users\\Public\\Documents\\"+temp+".txt"));
+			String line = reader.readLine();
+			tempParagraph = jsonSerializer.fromJson(line, ExtParagraph.class);
+			list.add(tempParagraph);
+			System.out.println("NL: "+ line);
+			while(line != null) {
+				line = reader.readLine();
+				tempParagraph = jsonSerializer.fromJson(line, ExtParagraph.class);
+				list.add(tempParagraph);
+				System.out.println("NL: "+ line);
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return list;
 	}
 
 	@Override
 	public List<ExtMemento> retornarEstadosAnterioresGuardados(String temp) {
 
-		return jsonSerializer.fromJson(temp, ArrayList.class);
+		List<ExtMemento> list = new ArrayList<>();
+		ExtMemento tempMemento = null;
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Users\\Public\\Documents\\"+temp+"Memento.txt"));
+			String line = reader.readLine();
+			tempMemento = jsonSerializer.fromJson(line, ExtMemento.class);
+			list.add(tempMemento);
+			System.out.println("NL: "+ line);
+			while(line != null) {
+				line = reader.readLine();
+				tempMemento = jsonSerializer.fromJson(line, ExtMemento.class);
+				list.add(tempMemento);
+				System.out.println("NL: "+ line);
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return list;
 	}
 
 	@Override
 	public String serializeListParagraphs(List<ExtParagraph> list) {
-		return jsonSerializer.toJson(list);
+		
+		String tempSer = "";
+		String listTemp = "";
+		
+		for (ExtParagraph currentParagraph : list) {
+			
+			tempSer = jsonSerializer.toJson(currentParagraph);
+			listTemp = listTemp + tempSer + "\n";
+		}
+		
+		
+		return listTemp;
 	}
 
 	@Override
 	public String serializeListMementos(List<ExtMemento> list) {
-		return jsonSerializer.toJson(list);
+		String tempSer = "";
+		String listTemp = "";
+		
+		for (ExtMemento currentMemento : list) {
+			
+			tempSer = jsonSerializer.toJson(currentMemento);
+			listTemp = listTemp + tempSer + "\n";
+		}
+		
+		
+		return listTemp;
 	}
 
 	@Override
@@ -125,7 +173,7 @@ public class TxtPersistence extends ExtPersistence {
 		List<ExtParagraph> temp = new ArrayList<>();
 		try {
 			String file = readFile(name);
-			temp = retornarParrafosGuardados(file, ExtParagraph[].class);
+			temp = retornarParrafosGuardados(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
