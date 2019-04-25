@@ -85,9 +85,9 @@ public class Controller {
 			try {
 				TxtPersistence saveTxt = new TxtPersistence();
 				String name = UI.leerString("Type the name of the File");
-				saveTxt.retornarParrafosGuardados(name);
-				textManager.setWholeText(saveTxt.readParagraphFile(name));
-				textManager.setWholeMementos(saveTxt.readMementoFile(name));
+				
+				textManager.setWholeText(saveTxt.retornarParrafosGuardados(name));
+				textManager.setWholeMementos(saveTxt.retornarEstadosAnterioresGuardados(name));
 				System.out.println("Information imported in the system.");
 			}catch(Exception e) {
 				System.out.println("Upss something went wrong.");
